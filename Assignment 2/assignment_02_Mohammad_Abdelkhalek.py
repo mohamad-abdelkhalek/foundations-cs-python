@@ -7,7 +7,7 @@ def displayMenu():
           "2. Find Max \n" +
           "3. Count Tags \n" +
           "4. Exit")
-    print("-" * 15, end="\n")
+    print("- " * 15, end="\n")
     print("Enter a choice: ")
     
 displayMenu()
