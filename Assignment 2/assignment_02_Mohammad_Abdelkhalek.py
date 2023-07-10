@@ -10,5 +10,4 @@ def displayMenu():
     print("-" * 15, end="\n")
     print("Enter a choice: ")
     
-
 displayMenu()
