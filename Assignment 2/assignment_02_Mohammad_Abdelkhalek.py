@@ -2,17 +2,18 @@
 # Mohammad Abdelkhalek Assignment 02 #
 ######################################
 
-"""def displayMenu():
-    print("1. Count Digits \n" +
-          "2. Find Max \n" +
-          "3. Count Tags \n" +
-          "4. Exit")
-    print("- " * 15, end="\n")
-    print("Enter a choice: ")"""
-    
-#displayMenu()
+import sys
 
-######################################
+#Display Menu function
+
+def displayMenu():
+    print("1. Count Digits")
+    print("2. Find Max")
+    print("3. Count Tags")
+    print("4. Exit")
+    print("- " * 15)
+
+###########################################################
 
 #Choice 1
 
@@ -23,24 +24,22 @@ def countDigits(integer):
     else:
         count = 1 + countDigits(integer // 10)
     return count
-       
-print(countDigits(252))
 
-######################################
+###########################################################
 
 #Choice 2
 
-def findMax(list1):    
+def findMax(list1):
     if len(list1) == 1:
-        return list1[0]    
+        return list1[0]
     else:
         max = findMax(list1[1:])
-        if list1[0] > max:  
+        if list1[0] > max:
             return list1[0]
         else:
             return max
         
-######################################
+###########################################################
 
 #Choice 3
 
@@ -65,17 +64,52 @@ HTMLCode = """
 def countTag(html, tag):
     openingTag = "<{}>".format(tag)
     closingTag = "</{}>".format(tag)
-    
-    beginingIndex = html.find(openingTag)
-    
-    if beginingIndex == -1:
+
+    beginningIndex = html.find(openingTag)
+
+    if beginningIndex == -1:
         return 0
-    
-    endIndex = html.find(closingTag, beginingIndex)
-    
-    if endIndex == -1:
+
+    endingIndex = html.find(closingTag, beginningIndex)
+
+    if endingIndex == -1:
         return 0
-    
-    lastHTML = html[endIndex + len(closingTag):]
+
+    lastHTML = html[endingIndex + len(closingTag):]
     return 1 + countTag(lastHTML, tag)
 
+###########################################################
+
+#Choice 4
+
+def exitProgram():
+    print("Exiting the program...")
+    sys.exit(0)
+
+
+###########################################################
+#Main function
+
+def main():
+    while True:
+        displayMenu()
+        choice = input("Enter a choice: ")
+
+        if choice == '1':
+            integer = int(input("Enter an integer: "))
+            print(countDigits(integer))
+        elif choice == '2':
+            list1 = input("Enter elements of the list separated by space: ")
+            userList = list1.split()
+            print(findMax(userList))
+        elif choice == '3':
+            tag = input("Enter the name of the HTML tag to find its occurrence: ")
+            occurrences = countTag(HTMLCode, tag)
+            print("Occurrences of <{}>: {}".format(tag, occurrences))
+        elif choice == '4':
+            exitProgram()
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
