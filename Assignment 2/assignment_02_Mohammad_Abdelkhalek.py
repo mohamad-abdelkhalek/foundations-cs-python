@@ -39,3 +39,43 @@ def findMax(list1):
             return list1[0]
         else:
             return max
+        
+######################################
+
+#Choice 3
+
+HTMLCode = """
+<html>
+<head>
+<title>My Website</title>
+</head>
+<body>
+<h1>Welcome to my website!</h1>
+<p>Here you'll find information about me and my hobbies.</p>
+<h2>Hobbies</h2>
+<ul>
+<li>Playing guitar</li>
+<li>Reading books</li>
+<li>Traveling</li>
+<li>Writing cool h1 tags</li>
+</ul>
+</body>
+</html>"""
+
+def countTag(html, tag):
+    openingTag = "<{}>".format(tag)
+    closingTag = "</{}>".format(tag)
+    
+    beginingIndex = html.find(openingTag)
+    
+    if beginingIndex == -1:
+        return 0
+    
+    endIndex = html.find(closingTag, beginingIndex)
+    
+    if endIndex == -1:
+        return 0
+    
+    lastHTML = html[endIndex + len(closingTag):]
+    return 1 + countTag(lastHTML, tag)
+
