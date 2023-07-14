@@ -7,10 +7,7 @@ import sys
 #Display Menu function
 
 def displayMenu():
-    print("1. Count Digits")
-    print("2. Find Max")
-    print("3. Count Tags")
-    print("4. Exit")
+    print("1. Count Digits\n2. Find Max\n3. Count Tags\n4. Exit")
     print("- " * 15)
 
 ###########################################################
