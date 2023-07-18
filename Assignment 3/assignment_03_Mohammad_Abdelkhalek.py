@@ -18,3 +18,18 @@ def sumTuples(tuple1, tuple2):
         sum = tuple1[i] + tuple2[i]
         lst.append(sum)
     return tuple(lst)
+
+##################################################################
+
+#Choice 2
+
+def exportJson(dictionary, name):
+    resultJson = "{\n"
+    
+    for key, value in dictionary.items():
+        jsonValue = '"' + value + '"' if isinstance(value, str) else str(value)
+        resultJson += '  "' + key + '": ' + jsonValue + ',\n'
+    
+    resultJson = resultJson.rstrip(",\n") + "\n}"
+    
+    print(name, "=", resultJson)
