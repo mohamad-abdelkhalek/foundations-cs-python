@@ -33,3 +33,48 @@ def exportJson(dictionary, name):
     resultJson = resultJson.rstrip(",\n") + "\n}"
     
     print(name, "=", resultJson)
+    
+##################################################################
+
+#Choice 3
+
+def importJson(file_name):
+    data_list = []
+
+    with open(file_name, 'r') as file:
+        json_str = file.read()
+
+    json_str = json_str.replace(" ", "").replace("\n", "")
+
+    if not json_str:
+        return data_list
+
+    def find_next_object_start_index(start_index):
+        stack = 0
+        while start_index < len(json_str):
+            if json_str[start_index] == '{':
+                stack += 1
+            elif json_str[start_index] == '}':
+                stack -= 1
+
+            if stack == 0:
+                return start_index
+
+            start_index += 1
+        return -1
+
+    index = 0
+    while index < len(json_str):
+        if json_str[index] == '{':
+            next_object_index = find_next_object_start_index(index)
+            if next_object_index != -1:
+                json_object_str = json_str[index:next_object_index+1]
+                data_list.append(eval(json_object_str))
+                index = next_object_index + 1
+            else:
+                break
+        else:
+            index += 1
+
+    return data_list
+
