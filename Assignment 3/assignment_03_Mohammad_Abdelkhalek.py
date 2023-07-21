@@ -78,3 +78,11 @@ def importJson(file_name):
 
     return data_list
 
+##################################################################
+
+#Choice 4
+
+def exitProgram():
+    print("Exiting the program...")
+    sys.exit(0)
+
