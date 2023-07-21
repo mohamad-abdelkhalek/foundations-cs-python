@@ -2,6 +2,8 @@
 # Mohammad Abdelkhalek Assignment 03 #
 ######################################
 
+import sys
+
 #Display Menu function
 
 def displayMenu():
@@ -85,4 +87,65 @@ def importJson(file_name):
 def exitProgram():
     print("Exiting the program...")
     sys.exit(0)
+    
+##################################################################
 
+tuple1 = (1, 2, 3, 4)
+tuple2 = (1, 1, 1, 1)
+
+person = {
+    "name": "John Doe",
+    "age": 30,
+    "occupation": "Software Engineer",
+    "location": "New York City",
+    "email": "john.doe@example.com"
+}
+
+books = {
+  "name": "John Doe",
+  "age": 30,
+  "email": "john.doe@example.com",
+  "is_subscribed": True,
+  "address": {
+    "street": "123 Main Street",
+    "city": "Anytown",
+    "zip_code": "12345"
+  },
+  "hobbies": ["reading", "swimming", "hiking"],
+  "friends": [
+    {
+      "name": "Alice",
+      "age": 28
+    },
+    {
+      "name": "Bob",
+      "age": 32
+    },
+    {
+      "name": "Eve",
+      "age": 27
+    }
+  ]
+}
+##################################################################
+
+#Main function
+
+def main():
+    while True:
+        displayMenu()
+        choice = input("Enter a choice: ")
+        
+        if choice == '1':
+            print(sumTuples(tuple1, tuple2))
+        elif choice == '2':
+            exportJson(person, person.json)
+        elif choice == '3':
+            print(importJson(books.json))
+        elif choice == '4':
+            exitProgram()
+        else:
+            print("Invalid input! Please try again")
+
+if __name__ == "__main__":
+    main()
