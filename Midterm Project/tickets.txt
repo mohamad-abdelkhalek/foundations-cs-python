@@ -4,7 +4,6 @@ tick104, ev003, sami, 20230805, 4
 tick103, ev001, charbel, 20230804, 3
 tick105, ev003, ahmad, 20230804, 1
 tick106, ev001, ali, 20230806, 5
-tick106, ev006, david, 20230730, 6
 tick107, ev003, mohamad, 20220807, 9
 tick108, ev002, carl, 20230731, 8
 tick109, ev004, farah, 20230808, 7
@@ -12,3 +11,4 @@ tick110, ev009, reem, 20231109, 0
 tick111, ev010, salim, 20231212, 0
 tick112, ev116, Karim, 20231208, 0
 tick113, ev118, kamal, 20231119, 0
+tick114, ev006, david, 20230730, 6
