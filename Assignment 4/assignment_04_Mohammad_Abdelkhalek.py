@@ -15,12 +15,9 @@ def displayMenu():
 
 class Graph:
 
-    def __init__(self, vertices):
+    def __init__(self):
         self.adj_list = {}
-        self.vertices = vertices
 
-        for vertex in range(vertices):
-            self.adj_list[vertex] = []
 
     def addEdge(self, u, v):
         if u not in self.adj_list:
@@ -36,7 +33,7 @@ class Graph:
             print(f"Username '{username}' is already taken. Please choose another username")
         else:
             self.adj_list[username] = []
-            print(f"User '{username}' has been added to the platform.")
+            print(f"User '{username}' has been added to the platform")
     
     
     def removeUser(self, username):
@@ -46,9 +43,17 @@ class Graph:
             del self.adj_list[username]
             print(f"User '{username}' has been removed from the platform with their connections")
         else:
-            print(f"Username '{username}' does not exist in the platform. Please make sure of the username.")
+            print(f"Username '{username}' does not exist in the platform. Please make sure of the username")
             
-            
+    
+    def addConnection(self, user1, user2):
+        if user1 in self.adj_list and user2 in self.adj_list:
+            self.add_edge(user1, user2)
+            print(f"Connection added between '{user1}' and '{user2}'")
+        else:
+            print("Both users must be in the platform to add a connection between them")
+
+     
     def DFS(self, v):
         visited = [False] * self.vertices
         stack = [v]
