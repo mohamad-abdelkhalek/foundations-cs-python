@@ -22,15 +22,33 @@ class Graph:
         for vertex in range(vertices):
             self.adj_list[vertex] = []
 
-
+    def addEdge(self, u, v):
+        if u not in self.adj_list:
+            self.adj_list[u] = []
+        if v not in self.adj_list:
+            self.adj_list[v] = []
+        self.adj_list[u].append(v)
+        self.adj_list[v].append(u)
+        
+        
     def addUser(self, username):
         if username in self.adj_list:
-            print(f"Username '{username}' is already taken. Please choose another username.")
+            print(f"Username '{username}' is already taken. Please choose another username")
         else:
             self.adj_list[username] = []
             print(f"User '{username}' has been added to the platform.")
     
     
+    def removeUser(self, username):
+        if username in self.adj_list:
+            for w in self.adj_list[username]:
+                self.adj_list[w].remove(username)
+            del self.adj_list[username]
+            print(f"User '{username}' has been removed from the platform with their connections")
+        else:
+            print(f"Username '{username}' does not exist in the platform. Please make sure of the username.")
+            
+            
     def DFS(self, v):
         visited = [False] * self.vertices
         stack = [v]
