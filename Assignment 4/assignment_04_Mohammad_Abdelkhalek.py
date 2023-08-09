@@ -26,8 +26,9 @@ class Graph:
             self.adj_list[v] = []
         self.adj_list[u].append(v)
         self.adj_list[v].append(u)
+    
         
-        
+    #Choice 1    
     def addUser(self, username):
         if username in self.adj_list:
             print(f"Username '{username}' is already taken. Please choose another username")
@@ -36,6 +37,7 @@ class Graph:
             print(f"User '{username}' has been added to the platform")
     
     
+    #Choice 2
     def removeUser(self, username):
         if username in self.adj_list:
             for w in self.adj_list[username]:
@@ -44,8 +46,9 @@ class Graph:
             print(f"User '{username}' has been removed from the platform with their connections")
         else:
             print(f"Username '{username}' does not exist in the platform. Please make sure of the username")
-            
     
+           
+    #Choice 3
     def addConnection(self, user1, user2):
         if user1 in self.adj_list and user2 in self.adj_list:
             self.add_edge(user1, user2)
@@ -53,7 +56,18 @@ class Graph:
         else:
             print("Both users must be in the platform to add a connection between them")
 
-     
+    #Choice 4
+    def removeConnection(self, user1, user2):
+        if user1 in self.adj_list and user2 in self.adj_list:
+            if user2 in self.adj_list[user1]:
+                self.adj_list[user1].remove(user2)
+                self.adj_list[user2].remove(user1)
+                print(f"Connection between '{user1}' and '{user2}' has been removed")
+            else:
+                print(f"There is no connection between '{user1}' and '{user2}'")
+        else:
+            print("Both users must exist in the platform to remove a connection.")
+            
     def DFS(self, v):
         visited = [False] * self.vertices
         stack = [v]
